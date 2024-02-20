@@ -8,6 +8,7 @@ const helmet = require("helmet");
 const mongoose = require("mongoose");
 const mongoSanitize = require("express-mongo-sanitize");
 const userRouter = require("../src/routes/user.route");
+const productRoute = require("../src/routes/product.route");
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -25,8 +26,9 @@ app.use(helmet());
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Hello developers" });
 });
-
+// bypass all routes
 app.use("/api/auth",userRouter);
+app.use("/api/auth",productRoute);
 
 mongoose
   .connect(uri)

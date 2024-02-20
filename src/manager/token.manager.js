@@ -11,7 +11,7 @@ const createToken = (id) => {
   }
 };
 
-const verifyToken = () => {
+const verifyToken = (token) => {
   try {
     const payload = JWT.verify(token, process.env.JWT_SECRET);
     return payload;
