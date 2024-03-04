@@ -32,7 +32,7 @@ const productSchema = new Schema(
       required: true,
     },
     size: {
-      type: Number,
+      type: [Number],
       required: true,
     },
     rating: {

@@ -1,7 +1,30 @@
+const { default: mongoose } = require("mongoose");
 const handleError = require("../errors/handleError");
 const productModel = require("../models/product.model");
 // get all product controller
-const getAllProduct = async () => {};
+const getAllProduct = async (req, res) => {
+  try {
+    const products = await productModel.find({});
+    res.status(200).json(products);
+  } catch (error) {
+    await handleError(error, res);
+  }
+};
+
+// get a product controller
+const getAProduct = async (req, res) => {
+  const {sid} = req.params
+  if(!mongoose.Types.ObjectId.isValid(sid) ){
+    throw new Error("Invalid Id!")
+  }
+
+  try {
+    const product = await productModel.findById(sid);
+    res.status(200).json(product);
+  } catch (error) {
+    await handleError(error, res);
+  }
+};
 // create product controller
 const createProduct = async (req, res) => {
   const {
@@ -54,4 +77,5 @@ const createProduct = async (req, res) => {
 module.exports = {
   getAllProduct,
   createProduct,
+  getAProduct
 };

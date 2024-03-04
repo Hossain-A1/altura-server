@@ -20,4 +20,4 @@ const verifyToken = (token) => {
   }
 };
 
-module.exports = {createToken,verifyToken}
+module.exports = { createToken, verifyToken };

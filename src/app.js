@@ -9,6 +9,7 @@ const mongoose = require("mongoose");
 const mongoSanitize = require("express-mongo-sanitize");
 const userRouter = require("../src/routes/user.route");
 const productRoute = require("../src/routes/product.route");
+const paymentRoute = require("../src/routes/payment.router");
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -27,8 +28,9 @@ app.get("/", (req, res) => {
   res.status(200).json({ message: "Hello developers" });
 });
 // bypass all routes
-app.use("/api/auth",userRouter);
-app.use("/api/auth",productRoute);
+app.use("/api/auth", userRouter);
+app.use("/api/products", productRoute);
+app.use("/api", paymentRoute);
 
 mongoose
   .connect(uri)
