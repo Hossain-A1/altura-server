@@ -31,7 +31,7 @@ const login = async (req, res) => {
     await Promise.resolve().then(async () => {
       const user = await userModel.login(email, password);
 
-      const token =createToken(user._id);
+      const token = createToken(user._id);
 
       res.status(200).json({ user, token });
     });

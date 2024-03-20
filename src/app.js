@@ -40,5 +40,5 @@ mongoose
     });
   })
   .catch((error) => {
-    console.log(`DB error is => ${error}`);
+    console.log(`DB error is => ${error.message}`);
   });
