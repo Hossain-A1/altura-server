@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/app.js",
+    "build": "echo 'No build step required for Node.js backend'",
     "dev": "nodemon src/app.js",
     "lint:check": "eslint . --ext .js,.ts --config .eslintrc-config.js",
     "lint:fix": "eslint . --ext .js,.ts --fix --config .eslintrc-config.js"
