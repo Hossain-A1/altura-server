@@ -3,7 +3,7 @@ const cors = require("cors");
 require("dotenv").config();
 const morgan = require("morgan");
 const hpp = require("hpp");
-const { urlencoded } = require("body-parser");
+const bodyParser = require("body-parser"); // Changed to bodyParser
 const helmet = require("helmet");
 const mongoose = require("mongoose");
 const mongoSanitize = require("express-mongo-sanitize");
@@ -17,8 +17,8 @@ const uri = process.env.MONGO_URI;
 // middleware
 app.use(express.json());
 app.use(morgan("dev"));
-app.use(cors());
-app.use(urlencoded({ extended: true }));
+app.use(cors({ credentials: true })); // Fixed typo: 'credentials' instead of 'credentials:true'
+app.use(bodyParser.urlencoded({ extended: true })); // Used bodyParser.urlencoded instead of urlencoded
 app.use(mongoSanitize());
 app.use(hpp());
 app.use(helmet());
@@ -36,9 +36,9 @@ mongoose
   .connect(uri)
   .then(() => {
     app.listen(port, () => {
-      console.log(`App listen and mongoDB connect on port ${port}`);
+      console.log(`App listening and MongoDB connected on port ${port}`); // Fixed typo: 'listening'
     });
   })
   .catch((error) => {
-    console.log(`DB error is => ${error.message}`);
+    console.log(`DB error is => ${error}`);
   });

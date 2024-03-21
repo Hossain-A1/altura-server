@@ -8,8 +8,7 @@
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
     "lint:check": "eslint . --ext .js,.ts --config .eslintrc-config.js",
-    "lint:fix": "eslint . --ext .js,.ts --fix --config .eslintrc-config.js",
-    "prepare": "husky install"
+    "lint:fix": "eslint . --ext .js,.ts --fix --config .eslintrc-config.js"
   },
   "keywords": [],
   "author": "",
